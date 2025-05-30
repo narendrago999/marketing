@@ -114,15 +114,15 @@ Select a subscription and tenant (Type a number or Enter for no changes): 1
 
 ## 4. Terraform Configuration:
 
-* Navigate to the `terraform-configs` folder in fabric starter kit.
-* After setting the values below, upload the following metadata files containing the configuration below.
-Each module in the Terraform setup reads **CSV files** to create resources dynamically.
-
----
+* Navigate to the `terraform-configs` folder in fabric starter kit repository.
+* Each module in the `terraform-configs` directory reads data from CSV metadata files to dynamically create resources.
+* Below you can find all the modules.
 
 ### 4.1 Resource Group Module:
 
-### 🔹 resource\_group\_variables.csv
+To configure the **Resource Group Module**, you need to upload the following metadata file:
+
+### 🔹 File : resource\_group\_variables.csv
 
 | Column Name               | Description                                          |
 | ------------------------- | ---------------------------------------------------- |
@@ -140,7 +140,9 @@ Each module in the Terraform setup reads **CSV files** to create resources dynam
 
 ### 4.2 Fabric Capacity Module:
 
-### 🔹 fabric\_variables.csv
+To configure the **Fabric Capacity Module**, you need to upload the following metadata file:
+
+### 🔹 File : fabric\_variables.csv
 
 | Column Name   | Description   |
 | ------------- | ------------- |
@@ -150,9 +152,7 @@ Each module in the Terraform setup reads **CSV files** to create resources dynam
 
 🔎 **Purpose**: Used to tag resources and group them logically by environment or project.
 
----
-
-### 🔹 capacities.csv
+### 🔹 File : capacities.csv
 
 | Column Name | Description                                                                        |
 | ----------- | ---------------------------------------------------------------------------------- |
@@ -170,7 +170,9 @@ Each module in the Terraform setup reads **CSV files** to create resources dynam
 
 ### 4.3 Application Module:
 
-### 🔹 application\_variables.csv
+To configure the **Application Module**, you need to upload the following metadata file:
+
+### 🔹 File : application\_variables.csv
 
 | Column Name                | Description                              |
 | -------------------------- | ---------------------------------------- |
@@ -183,7 +185,9 @@ Each module in the Terraform setup reads **CSV files** to create resources dynam
 
 ### 4.4 Key vault Module:
 
-### 🔹 key\_vault\_variables.csv
+To configure the **Key vault Module**, you need to upload the following metadata file:
+
+### 🔹 File : key\_vault\_variables.csv
 
 | Column Name                            | Description                  |
 | -------------------------------------- | ---------------------------- |
@@ -194,7 +198,7 @@ Each module in the Terraform setup reads **CSV files** to create resources dynam
 
 
 
-### 🔹 vault\_access\_policies.csv
+### 🔹 File : vault\_access\_policies.csv
 
 | Column Name               | Description                        |
 | ------------------------- | ---------------------------------- |
@@ -236,9 +240,9 @@ resource "azurerm_role_assignment" "example" {
 }
 ```
 
----
+To configure the **Roles Assignment Module**, you need to upload the following metadata file:
 
-### 🔹 roles\_and\_users.csv
+### 🔹 File : roles\_and\_users.csv
 
 | Column Name | Description                                          |
 | ----------- | ---------------------------------------------------- |
