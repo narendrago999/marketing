@@ -1,5 +1,5 @@
 
-# Terraform and Azure CLI Setup Guide for Azure Infrastructure
+# Terraform Fabric Starter Kit
 
 This guide walks you through everything from installing Terraform and Azure CLI to provisioning Azure resources using CSV-based configurations.
 
@@ -7,13 +7,16 @@ This guide walks you through everything from installing Terraform and Azure CLI 
 
 ## Table of Contents
 
-1. [Install Terraform](#1-install-terraform)
-2. [Install Azure CLI](#2-install-azure-cli)
-3. [Login to Azure Account](#3-login-to-azure-account)
-4. [Terraform Configuration](#4-understand-csv-files-and-variables)
-5. [Role Assignments (IAM) in Azure](#5-role-assignments-iam-in-azure)
-6. [Execution Guide](#6-execute-the-deployment-script)
-7. [Common Issues and Tips](#7-common-issues-and-tips)
+| #  | Section                          |
+|----|----------------------------------|
+| 1  | Install Terraform                |
+| 2  | Install Azure CLI                |
+| 3  | Login to Azure Account           |
+| 4  | Terraform Configuration          |
+| 5  | Role Assignments (IAM) in Azure  |
+| 6  | Execution Guide                  |
+| 7  | Common Issues and Tips           |
+
 
 ---
 
@@ -82,6 +85,17 @@ az login
 
 * This opens a browser and prompts you to sign in with your **Azure AD (Active Directory)** credentials.
 * After successful login, it shows your subscriptions and tenant details.
+
+### Tenant and Subscription Selection
+
+| No  | Default | Subscription Name | Subscription ID                             | Tenant           |
+|-----|---------|-------------------|---------------------------------------------|------------------|
+| [1] | *       | development       | v1979g48-807e-43a4-8f19-c1056b6d5dc4         | JMAN Group Ltd   |
+
+> The default is marked with an `*`; the default tenant is **JMAN Group Ltd** and subscription ID is `v1979g48-807e-43a4-8f19-c1056b6d5dc4`.
+
+Select a subscription and tenant (Type a number or Enter for no changes): 1
+
 
 ### 📍 Purpose
 
@@ -193,23 +207,7 @@ Each module in the Terraform setup reads **CSV files** to create resources dynam
 
 ---
 
-### Roles Assignment Module:
-
-### 🔹 role\_assignment\_variables.csv
-
-| Column Name | Description                                          |
-| ----------- | ---------------------------------------------------- |
-| `resource_group_name`     | The name of the Azure resource group(Same as you Resource Group name). |
-
-
-### 🔹 roles\_and\_users.csv
-
-| Column Name | Description                                          |
-| ----------- | ---------------------------------------------------- |
-| `role`      | Role (e.g., `Contributor`, `Reader`)                 |
-| `username`  | Mail address of the user                             |
-
----
+### 4.5 Roles Assignment Module:
 
 ### Role Assignments (IAM) in Azure
 
@@ -240,6 +238,15 @@ resource "azurerm_role_assignment" "example" {
 
 ---
 
+### 🔹 roles\_and\_users.csv
+
+| Column Name | Description                                          |
+| ----------- | ---------------------------------------------------- |
+| `role`      | Role (e.g., `Contributor`, `Reader`)                 |
+| `username`  | Mail address of the user                             |
+
+---
+
 ## 6. Execution Guide
 
 Follow the steps below to configure and run the deployment script for setting up infrastructure and workspaces:
@@ -260,6 +267,18 @@ After running the script, you will be prompted to select one of the following op
 * **2 → Fabric Workspace Only**
 
 Choose the appropriate option based on your project requirements.
+
+#### Option 1: Infrastructure Setup + Fabric Workspace
+- Provisions all required Azure infrastructure components.
+- Sets up necessary resources like Resource Groups, Storage Accounts, Key Vaults, etc.
+- Deploys a new Microsoft Fabric workspace within the provisioned infrastructure.
+> Recommended for new or clean environments where infrastructure does not already exist.
+
+#### Option 2: Fabric Workspace Only
+- Skips infrastructure provisioning.
+- Only deploys a Microsoft Fabric workspace using existing Azure infrastructure.
+- Suitable when the necessary resources (e.g., Resource Group, Storage Account) are already provisioned.
+> Ideal for environments where you want to reuse or manage infrastructure separately.
 
 ---
 
@@ -307,18 +326,4 @@ Select this option to create workspaces and onboard users.
 | Incorrect subscription being used | Use `az account set --subscription <id>`                          |
 | CSV file not read                 | Ensure correct path and format (no extra commas or empty headers) |
 
----
 
-## 🎓 Summary
-
-By completing these steps, you'll have:
-
-✅ Azure CLI and Terraform installed
-✅ Authenticated access to Azure
-✅ All resources defined via CSV
-✅ IAM roles assigned correctly
-✅ Infrastructure provisioned automatically
-
----
-
-Would you like this saved as a downloadable `README.md` or `.pdf` file for easy sharing?
