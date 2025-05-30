@@ -101,7 +101,7 @@ az login
 ## 4. Terraform Configuration:
 
 * Navigate to the `terraform-configs` folder in fabric starter kit.
-* After setting the values below, upload the metadata file containing the configuration below.
+* After setting the values below, upload the following metadata files containing the configuration below.
 Each module in the Terraform setup reads **CSV files** to create resources dynamically.
 
 ---
