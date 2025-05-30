@@ -276,12 +276,12 @@ Select this option to create workspaces and onboard users.
 
   * The capacity name for the connection.
   * A workspace name.
-  * For every workspace enter the capacity number from the capacities list.
 * The script will automatically create four workspaces: dev, prod, landing-dev, landing-prod.
+*  For every workspace enter the capacity number from the capacities list.
 * Users will be assigned to these workspaces based on the roles defined in the `workspace_role_assignment.csv` file located at:
 
   ```
-  Fabric/templates/workspace_role_assignment.csv
+  terraform-configs/workspace_role_assignment.csv
   ```
 
 **User Role Guidelines**:
